@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Farmacy
 {
-    public partial class Edit_userLevel : Form
+    public partial class ReporteVentas : Form
     {
-        public Edit_userLevel()
+        public ReporteVentas()
         {
             InitializeComponent();
-        }
-
-        private void Edit_userLevel_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

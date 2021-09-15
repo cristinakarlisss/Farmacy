@@ -36,12 +36,10 @@ namespace Farmacy
             this.panelMenuOptions = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panelSubmenu4 = new System.Windows.Forms.Panel();
-            this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnOpUsuarios = new System.Windows.Forms.Button();
             this.panelSubmenu3 = new System.Windows.Forms.Panel();
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnOpVentas = new System.Windows.Forms.Button();
-            this.panelSubmenu2 = new System.Windows.Forms.Panel();
             this.panelSubmenu1 = new System.Windows.Forms.Panel();
             this.btnProdVendidos = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
@@ -56,9 +54,9 @@ namespace Farmacy
             this.buttonHideMenu = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnReporteVentas = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelMenuOptions.SuspendLayout();
-            this.panelSubmenu4.SuspendLayout();
             this.panelSubmenu3.SuspendLayout();
             this.panelSubmenu1.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -97,7 +95,6 @@ namespace Farmacy
             this.panelMenuOptions.Controls.Add(this.btnOpUsuarios);
             this.panelMenuOptions.Controls.Add(this.panelSubmenu3);
             this.panelMenuOptions.Controls.Add(this.btnOpVentas);
-            this.panelMenuOptions.Controls.Add(this.panelSubmenu2);
             this.panelMenuOptions.Controls.Add(this.panelSubmenu1);
             this.panelMenuOptions.Controls.Add(this.btnOpProductos);
             this.panelMenuOptions.Controls.Add(this.panelLogo);
@@ -130,29 +127,11 @@ namespace Farmacy
             this.panelSubmenu4.AutoSize = true;
             this.panelSubmenu4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelSubmenu4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelSubmenu4.Controls.Add(this.btnUsuarios);
             this.panelSubmenu4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubmenu4.Location = new System.Drawing.Point(0, 367);
+            this.panelSubmenu4.Location = new System.Drawing.Point(0, 395);
             this.panelSubmenu4.Name = "panelSubmenu4";
-            this.panelSubmenu4.Size = new System.Drawing.Size(200, 28);
+            this.panelSubmenu4.Size = new System.Drawing.Size(200, 0);
             this.panelSubmenu4.TabIndex = 7;
-            // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.AutoSize = true;
-            this.btnUsuarios.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUsuarios.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(200, 28);
-            this.btnUsuarios.TabIndex = 2;
-            this.btnUsuarios.Text = "Ver Usuarios";
-            this.btnUsuarios.UseVisualStyleBackColor = false;
-            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnOpUsuarios
             // 
@@ -161,7 +140,7 @@ namespace Farmacy
             this.btnOpUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpUsuarios.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpUsuarios.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnOpUsuarios.Location = new System.Drawing.Point(0, 321);
+            this.btnOpUsuarios.Location = new System.Drawing.Point(0, 349);
             this.btnOpUsuarios.Name = "btnOpUsuarios";
             this.btnOpUsuarios.Size = new System.Drawing.Size(200, 46);
             this.btnOpUsuarios.TabIndex = 6;
@@ -173,12 +152,13 @@ namespace Farmacy
             // 
             this.panelSubmenu3.AutoSize = true;
             this.panelSubmenu3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelSubmenu3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelSubmenu3.BackColor = System.Drawing.Color.Transparent;
+            this.panelSubmenu3.Controls.Add(this.btnReporteVentas);
             this.panelSubmenu3.Controls.Add(this.btnVentas);
             this.panelSubmenu3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubmenu3.Location = new System.Drawing.Point(0, 293);
             this.panelSubmenu3.Name = "panelSubmenu3";
-            this.panelSubmenu3.Size = new System.Drawing.Size(200, 28);
+            this.panelSubmenu3.Size = new System.Drawing.Size(200, 56);
             this.panelSubmenu3.TabIndex = 5;
             // 
             // btnVentas
@@ -212,13 +192,6 @@ namespace Farmacy
             this.btnOpVentas.Text = "Ventas";
             this.btnOpVentas.UseVisualStyleBackColor = false;
             this.btnOpVentas.Click += new System.EventHandler(this.btnOpVentas_Click);
-            // 
-            // panelSubmenu2
-            // 
-            this.panelSubmenu2.Location = new System.Drawing.Point(0, 0);
-            this.panelSubmenu2.Name = "panelSubmenu2";
-            this.panelSubmenu2.Size = new System.Drawing.Size(200, 100);
-            this.panelSubmenu2.TabIndex = 9;
             // 
             // panelSubmenu1
             // 
@@ -410,6 +383,23 @@ namespace Farmacy
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnReporteVentas
+            // 
+            this.btnReporteVentas.AutoSize = true;
+            this.btnReporteVentas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReporteVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
+            this.btnReporteVentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReporteVentas.FlatAppearance.BorderSize = 0;
+            this.btnReporteVentas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReporteVentas.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteVentas.Location = new System.Drawing.Point(0, 28);
+            this.btnReporteVentas.Name = "btnReporteVentas";
+            this.btnReporteVentas.Size = new System.Drawing.Size(200, 28);
+            this.btnReporteVentas.TabIndex = 3;
+            this.btnReporteVentas.Text = "Reporte de Ventas";
+            this.btnReporteVentas.UseVisualStyleBackColor = false;
+            this.btnReporteVentas.Click += new System.EventHandler(this.btnReporteVentas_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -429,8 +419,6 @@ namespace Farmacy
             this.panelMenu.PerformLayout();
             this.panelMenuOptions.ResumeLayout(false);
             this.panelMenuOptions.PerformLayout();
-            this.panelSubmenu4.ResumeLayout(false);
-            this.panelSubmenu4.PerformLayout();
             this.panelSubmenu3.ResumeLayout(false);
             this.panelSubmenu3.PerformLayout();
             this.panelSubmenu1.ResumeLayout(false);
@@ -452,7 +440,6 @@ namespace Farmacy
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Button btnOpProductos;
         private System.Windows.Forms.Panel panelChildForm;
-        private System.Windows.Forms.Panel panelSubmenu2;
         private System.Windows.Forms.Button btnInventario;
         private System.Windows.Forms.Panel panelSubmenu1;
         private System.Windows.Forms.Button btnCategorias;
@@ -461,7 +448,6 @@ namespace Farmacy
         private System.Windows.Forms.Panel panelSubmenu3;
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.Panel panelSubmenu4;
-        private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnOpUsuarios;
         private System.Windows.Forms.Button btnProdVendidos;
         private System.Windows.Forms.Label lblUser;
@@ -470,5 +456,6 @@ namespace Farmacy
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel panelUser;
         private System.Windows.Forms.Label lblReloj;
+        private System.Windows.Forms.Button btnReporteVentas;
     }
 }

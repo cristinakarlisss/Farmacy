@@ -89,7 +89,7 @@ namespace Farmacy
                     {
                         ok = true;
                         Program._isLogin = true;
-                        Program._userName = user;
+                        //Program._userName = user;
                         Usuarios.Id = reader.GetInt32(0);
                         Usuarios.UserName = reader.GetString(1);
                         Usuarios.Password = reader.GetString(2);
@@ -107,6 +107,41 @@ namespace Farmacy
                 cnn.Close();
                 return ok;
             }
+        }
+        public void GetUserData(string query)
+        {
+            using (SqlConnection cnn = new SqlConnection(conexion))
+            {
+                try
+                {
+                    if (cnn.State == ConnectionState.Open)
+                        cnn.Close();
+                    cnn.Open();
+
+                    SqlCommand cmd = new SqlCommand(query, cnn) { CommandType = CommandType.Text };
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                       
+                        Usuarios.Id = reader.GetInt32(0);
+                        Usuarios.UserName = reader.GetString(1);
+                        Usuarios.Password = reader.GetString(2);
+                        Usuarios.LastUpd = reader.GetDateTime(3);
+                        Usuarios.UserLevel = reader.GetInt32(4);
+                       
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                  
+                    cnn.Close();
+                }
+                cnn.Close();
+               
+            }
+
         }
         public bool GetPassword(string query)
         {
@@ -353,6 +388,34 @@ namespace Farmacy
                 }
                 
             }
+        }
+
+        public int NoVenta()
+        { 
+            using(SqlConnection cnn = new SqlConnection(conexion))
+            {
+                int v = 0;
+                try
+                {
+                    if (cnn.State == ConnectionState.Open)
+                        cnn.Close();
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Ventas", cnn) { CommandType = CommandType.Text };
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                        v = reader.GetInt32(0);
+
+                }
+                catch(Exception ex)
+                {
+                    cnn.Close();
+                }
+                cnn.Close();
+                return v;
+            }
+            
+           
+            
         }
     }
 }

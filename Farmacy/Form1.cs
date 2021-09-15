@@ -22,9 +22,16 @@ namespace Farmacy
         private void hideSubMenu()
         {
             panelSubmenu1.Visible = false;
-            panelSubmenu2.Visible = false;
+            //panelSubmenu2.Visible = false;
             panelSubmenu3.Visible = false;
-            panelSubmenu4.Visible = false;
+            //if (Usuarios.UserLevel != 1)
+            //{ 
+            //    //panelSubmenu4.Visible = false;
+            //    btnOpUsuarios.Visible = false;
+            //}
+            
+            
+
 
         }
         private void hideMenu()
@@ -41,8 +48,12 @@ namespace Farmacy
             {
                 btnLogin.Text = "Cerrar Sesión";
                 btnLogin.Update();
-                lblUser.Text = Program._userName;
+                lblUser.Text =Usuarios.UserName;
                 lblUser.Update();
+                //if (Usuarios.UserLevel == 1)
+                //{
+                //    btnOpUsuarios.Visible = true;
+                //}  
             }
             else
             {
@@ -95,7 +106,7 @@ namespace Farmacy
 
         private void buttonOpcion2_Click(object sender, EventArgs e)
         {
-            showSubmenu(panelSubmenu2);
+            //showSubmenu(panelSubmenu2);
         }
 
         private Form activeForm = null;
@@ -113,7 +124,20 @@ namespace Farmacy
 
         private void btnOpUsuarios_Click(object sender, EventArgs e)
         {
-            showSubmenu(panelSubmenu4);
+            if (Program._isLogin)
+            {
+                if (Usuarios.UserLevel == 1)
+                {
+                    Program._option = "User";
+                    openChildFormInPanel(new Usuario());
+                }
+                else
+                    MessageBox.Show("No tienes permiso de acceder a esta opción");
+            }
+            else
+                MessageBox.Show("Debes iniciar sesión primero");
+            //showSubmenu(panelSubmenu4);
+            //showSubmenu(panelUsuariosbotones);
         }
         private void openChildFormInPanel(Form childForm)
         {
@@ -128,6 +152,7 @@ namespace Farmacy
             childForm.BringToFront();
             childForm.Show();
         }
+        
         private void btnProductos_Click(object sender, EventArgs e)
         {
             openChildFormInPanel(new Products());
@@ -162,16 +187,26 @@ namespace Farmacy
         private void btnVentas_Click(object sender, EventArgs e)
         {
             //if (Program._isLogin == true)
-            //    openChildFormInPanel(new Ventas());
+                openChildFormInPanel(new Ventas());
             //else
             //    MessageBox.Show("Debes iniciar sesión primero");
-            openChildFormInPanel(new Ventas());
+            //openChildFormInPanel(new Ventas());
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            Program._option = "User";
-            openChildFormInPanel(new Usuario());
+            if (Program._isLogin)
+            {
+                if (Usuarios.UserLevel == 1)
+                {
+                    Program._option = "User";
+                    openChildFormInPanel(new Usuario());
+                }
+                else
+                    MessageBox.Show("No tienes permiso de acceder a esta opción");
+            }
+            else
+                MessageBox.Show("Debes iniciar sesión primero");
         }
 
         //private void btnUserLevel_Click(object sender, EventArgs e)
@@ -189,6 +224,8 @@ namespace Farmacy
                 {
                     hideUser();
                     panelUser.Visible = true;
+                    hideSubMenu();
+
                 }
 
             }
@@ -196,11 +233,32 @@ namespace Farmacy
             {
                 Program._isLogin = false;
                 Program._userName = null;
-
+                Program._userId = 0;
+                UserClear();
                 hideUser();
+                hideSubMenu();
             }
         }
 
-        
+        private void UserClear()
+        {
+            Usuarios.Id = 0;
+            Usuarios.UserName = string.Empty;
+            Usuarios.Password = string.Empty;
+            Usuarios.UserLevel = 0;
+            if(activeForm != null)
+            activeForm.Close();
+        }
+
+        private void btnReporteVentas_Click(object sender, EventArgs e)
+        {
+            if (Program._isLogin)
+            {
+                
+                    openChildFormInPanel(new ReporteVentas());
+            }
+            else
+                    MessageBox.Show("Debes iniciar sesión primero");
+        }
     }
 }

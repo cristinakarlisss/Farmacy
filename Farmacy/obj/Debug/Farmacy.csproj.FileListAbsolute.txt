@@ -26,3 +26,4 @@ C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Edit_category.r
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Create_user.resources
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Create_userLevel.resources
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Edit_user.resources
+C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Edit_userLevel.resources

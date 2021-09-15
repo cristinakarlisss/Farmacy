@@ -29,13 +29,14 @@ namespace Farmacy
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numQty = new System.Windows.Forms.NumericUpDown();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtQty = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtVenta = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,35 +53,39 @@ namespace Farmacy
             this.txtDate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnRecibo = new System.Windows.Forms.Button();
             this.btnImporte = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.txtCambio = new System.Windows.Forms.TextBox();
-            this.txtImporte = new System.Windows.Forms.TextBox();
+            this.txtCambio = new System.Windows.Forms.Label();
+            this.txtImporte = new System.Windows.Forms.NumericUpDown();
+            this.lblCambio = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.txtTotalPagar = new System.Windows.Forms.TextBox();
+            this.txtTotalPagar = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtIgv = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.txtValorVenta = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImporte)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,11 +108,11 @@ namespace Farmacy
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(205)))), ((int)(((byte)(217)))));
+            this.groupBox2.Controls.Add(this.numQty);
             this.groupBox2.Controls.Add(this.btnRemove);
             this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.Controls.Add(this.txtTotal);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtQty);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 191);
@@ -115,6 +120,14 @@ namespace Farmacy
             this.groupBox2.Size = new System.Drawing.Size(495, 53);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
+            // 
+            // numQty
+            // 
+            this.numQty.Enabled = false;
+            this.numQty.Location = new System.Drawing.Point(70, 15);
+            this.numQty.Name = "numQty";
+            this.numQty.Size = new System.Drawing.Size(51, 22);
+            this.numQty.TabIndex = 15;
             // 
             // btnRemove
             // 
@@ -127,6 +140,7 @@ namespace Farmacy
             this.btnRemove.Size = new System.Drawing.Size(35, 35);
             this.btnRemove.TabIndex = 14;
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAdd
             // 
@@ -139,6 +153,7 @@ namespace Farmacy
             this.btnAdd.Size = new System.Drawing.Size(35, 35);
             this.btnAdd.TabIndex = 13;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtTotal
             // 
@@ -159,13 +174,6 @@ namespace Farmacy
             this.label8.TabIndex = 12;
             this.label8.Text = "Total:";
             // 
-            // txtQty
-            // 
-            this.txtQty.Location = new System.Drawing.Point(69, 15);
-            this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(46, 22);
-            this.txtQty.TabIndex = 11;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -184,6 +192,7 @@ namespace Farmacy
             this.txtVenta.Name = "txtVenta";
             this.txtVenta.Size = new System.Drawing.Size(105, 26);
             this.txtVenta.TabIndex = 11;
+            this.txtVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
@@ -269,6 +278,7 @@ namespace Farmacy
             this.btnSearch.Size = new System.Drawing.Size(45, 36);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtName
             // 
@@ -339,6 +349,20 @@ namespace Farmacy
             this.panel3.Size = new System.Drawing.Size(178, 566);
             this.panel3.TabIndex = 7;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.Image = global::Farmacy.Properties.Resources.ic_cancel;
+            this.btnCancel.Location = new System.Drawing.Point(28, 382);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(127, 97);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnRecibo
             // 
             this.btnRecibo.ForeColor = System.Drawing.Color.Black;
@@ -364,6 +388,7 @@ namespace Farmacy
             this.btnImporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImporte.UseVisualStyleBackColor = true;
+            this.btnImporte.Click += new System.EventHandler(this.btnImporte_Click);
             // 
             // btnNuevo
             // 
@@ -397,12 +422,13 @@ namespace Farmacy
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.EnableHeadersVisualStyles = false;
@@ -413,9 +439,25 @@ namespace Farmacy
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(643, 191);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(122, 26);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Image = global::Farmacy.Properties.Resources.ic_delete1;
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.removeToolStripMenuItem.Text = "Remover";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // panel4
             // 
@@ -423,6 +465,7 @@ namespace Farmacy
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(131)))), ((int)(((byte)(166)))));
             this.panel4.Controls.Add(this.txtCambio);
             this.panel4.Controls.Add(this.txtImporte);
+            this.panel4.Controls.Add(this.lblCambio);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Location = new System.Drawing.Point(12, 483);
@@ -433,29 +476,53 @@ namespace Farmacy
             // txtCambio
             // 
             this.txtCambio.BackColor = System.Drawing.SystemColors.ControlText;
-            this.txtCambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCambio.Enabled = false;
-            this.txtCambio.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCambio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCambio.ForeColor = System.Drawing.Color.Lime;
-            this.txtCambio.Location = new System.Drawing.Point(88, 34);
+            this.txtCambio.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.txtCambio.Location = new System.Drawing.Point(87, 33);
             this.txtCambio.Name = "txtCambio";
-            this.txtCambio.Size = new System.Drawing.Size(78, 30);
-            this.txtCambio.TabIndex = 13;
-            this.txtCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCambio.Size = new System.Drawing.Size(79, 30);
+            this.txtCambio.TabIndex = 24;
+            this.txtCambio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtImporte
             // 
-            this.txtImporte.Location = new System.Drawing.Point(4, 34);
+            this.txtImporte.DecimalPlaces = 2;
+            this.txtImporte.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.txtImporte.Location = new System.Drawing.Point(7, 37);
+            this.txtImporte.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
             this.txtImporte.Name = "txtImporte";
-            this.txtImporte.Size = new System.Drawing.Size(78, 26);
-            this.txtImporte.TabIndex = 12;
-            this.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtImporte.Size = new System.Drawing.Size(74, 26);
+            this.txtImporte.TabIndex = 16;
+            // 
+            // lblCambio
+            // 
+            this.lblCambio.BackColor = System.Drawing.SystemColors.ControlText;
+            this.lblCambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCambio.Enabled = false;
+            this.lblCambio.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCambio.ForeColor = System.Drawing.Color.Lime;
+            this.lblCambio.Location = new System.Drawing.Point(88, 34);
+            this.lblCambio.Name = "lblCambio";
+            this.lblCambio.ReadOnly = true;
+            this.lblCambio.Size = new System.Drawing.Size(78, 30);
+            this.lblCambio.TabIndex = 13;
+            this.lblCambio.TabStop = false;
+            this.lblCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(89, 8);
+            this.label10.Location = new System.Drawing.Point(93, 4);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(76, 23);
             this.label10.TabIndex = 1;
@@ -465,7 +532,7 @@ namespace Farmacy
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 8);
+            this.label9.Location = new System.Drawing.Point(3, 4);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 23);
             this.label9.TabIndex = 0;
@@ -482,8 +549,6 @@ namespace Farmacy
             this.panel5.Controls.Add(this.label14);
             this.panel5.Controls.Add(this.txtSubtotal);
             this.panel5.Controls.Add(this.label13);
-            this.panel5.Controls.Add(this.txtDescuento);
-            this.panel5.Controls.Add(this.label12);
             this.panel5.Controls.Add(this.txtValorVenta);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Location = new System.Drawing.Point(190, 483);
@@ -494,21 +559,19 @@ namespace Farmacy
             // txtTotalPagar
             // 
             this.txtTotalPagar.BackColor = System.Drawing.SystemColors.ControlText;
-            this.txtTotalPagar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotalPagar.Enabled = false;
-            this.txtTotalPagar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPagar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalPagar.ForeColor = System.Drawing.Color.Lime;
-            this.txtTotalPagar.Location = new System.Drawing.Point(349, 30);
+            this.txtTotalPagar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.txtTotalPagar.Location = new System.Drawing.Point(332, 33);
             this.txtTotalPagar.Name = "txtTotalPagar";
             this.txtTotalPagar.Size = new System.Drawing.Size(113, 30);
-            this.txtTotalPagar.TabIndex = 22;
-            this.txtTotalPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalPagar.TabIndex = 23;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(355, 8);
+            this.label15.Location = new System.Drawing.Point(333, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(103, 18);
             this.label15.TabIndex = 21;
@@ -519,7 +582,7 @@ namespace Farmacy
             this.txtIgv.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtIgv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIgv.Enabled = false;
-            this.txtIgv.Location = new System.Drawing.Point(267, 34);
+            this.txtIgv.Location = new System.Drawing.Point(238, 37);
             this.txtIgv.Name = "txtIgv";
             this.txtIgv.Size = new System.Drawing.Size(69, 26);
             this.txtIgv.TabIndex = 20;
@@ -529,7 +592,7 @@ namespace Farmacy
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(276, 8);
+            this.label14.Location = new System.Drawing.Point(251, 8);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(42, 18);
             this.label14.TabIndex = 19;
@@ -540,7 +603,7 @@ namespace Farmacy
             this.txtSubtotal.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubtotal.Enabled = false;
-            this.txtSubtotal.Location = new System.Drawing.Point(192, 34);
+            this.txtSubtotal.Location = new System.Drawing.Point(130, 37);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.Size = new System.Drawing.Size(69, 26);
             this.txtSubtotal.TabIndex = 18;
@@ -550,37 +613,18 @@ namespace Farmacy
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(192, 8);
+            this.label13.Location = new System.Drawing.Point(130, 8);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(69, 18);
             this.label13.TabIndex = 17;
             this.label13.Text = "Subtotal";
-            // 
-            // txtDescuento
-            // 
-            this.txtDescuento.Location = new System.Drawing.Point(103, 34);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(83, 26);
-            this.txtDescuento.TabIndex = 16;
-            this.txtDescuento.Text = "0.0";
-            this.txtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(100, 8);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 18);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Descuento";
             // 
             // txtValorVenta
             // 
             this.txtValorVenta.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtValorVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValorVenta.Enabled = false;
-            this.txtValorVenta.Location = new System.Drawing.Point(6, 34);
+            this.txtValorVenta.Location = new System.Drawing.Point(6, 37);
             this.txtValorVenta.Name = "txtValorVenta";
             this.txtValorVenta.Size = new System.Drawing.Size(88, 26);
             this.txtValorVenta.TabIndex = 14;
@@ -595,19 +639,6 @@ namespace Farmacy
             this.label11.Size = new System.Drawing.Size(91, 18);
             this.label11.TabIndex = 2;
             this.label11.Text = "Valor Venta";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Image = global::Farmacy.Properties.Resources.ic_cancel;
-            this.btnCancel.Location = new System.Drawing.Point(28, 382);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(127, 97);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // Ventas
             // 
@@ -631,13 +662,16 @@ namespace Farmacy
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQty)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImporte)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
@@ -669,27 +703,28 @@ namespace Farmacy
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtQty;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.TextBox txtCambio;
-        private System.Windows.Forms.TextBox txtImporte;
+        private System.Windows.Forms.TextBox lblCambio;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtTotalPagar;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtIgv;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtDescuento;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtValorVenta;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnRecibo;
         private System.Windows.Forms.Button btnImporte;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.NumericUpDown numQty;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown txtImporte;
+        private System.Windows.Forms.Label txtTotalPagar;
+        private System.Windows.Forms.Label txtCambio;
     }
 }

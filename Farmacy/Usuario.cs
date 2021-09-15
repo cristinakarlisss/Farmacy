@@ -76,15 +76,22 @@ namespace Farmacy
 
         private void btnAddLevel_Click(object sender, EventArgs e)
         {
-            Create_userLevel level = new Create_userLevel();
-            level.ShowDialog();
+            if (Usuarios.UserLevel == 1)
+            {
+                Create_userLevel level = new Create_userLevel();
+                level.ShowDialog();
+            }
             LoadNivelUsuarios();
         }
 
         private void btnAddU_Click(object sender, EventArgs e)
         {
-            Create_user user = new Create_user();
-            user.ShowDialog();
+            if(Usuarios.UserLevel == 1)
+            {
+                Create_user user = new Create_user();
+                user.ShowDialog();
+            }
+            
             LoadUsuarios();
         }
 
@@ -101,7 +108,6 @@ namespace Farmacy
                 MessageBox.Show("Selección incorrecta!!", "Error");
             }
         }
-
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Program._isLogin == true)
@@ -110,9 +116,17 @@ namespace Farmacy
                 {
                     if (Program._id > 0)
                     {
-
-                        Edit_user user = new Edit_user();
-                        user.ShowDialog();
+                        //string user = connection.GetUser($"SELECT UserName FROM Usuarios WHERE Id = {Program._id}");
+                        if (Usuarios.UserLevel == 1)
+                        {
+                            Edit_user editu = new Edit_user();
+                            editu.ShowDialog();
+                           
+                        }
+                        else
+                        {
+                            MessageBox.Show("No puedes editar este usuario.");
+                        }
                         LoadUsuarios();
                     }
                 }
@@ -120,8 +134,14 @@ namespace Farmacy
                 {
                     if (Program._id > 0)
                     {
-                        Edit_userLevel level = new Edit_userLevel();
-                        level.ShowDialog();
+                        if(Usuarios.UserLevel == 1)
+                        {
+                            Edit_userLevel level = new Edit_userLevel();
+                            level.ShowDialog();
+                           
+                        }
+                        else
+                            MessageBox.Show("No puedes editar este nivel.");
                         LoadNivelUsuarios();
                     }
                 }
@@ -135,12 +155,51 @@ namespace Farmacy
         {
             if (Program._option == "User")
             {
-
+                if (Program._id > 0)
+                {
+                    if (Usuarios.UserLevel == 1)
+                    {
+                        Delete delete = new Delete();
+                        delete.ShowDialog();
+                        if (Program._delete == true)
+                        {
+                            string query = $"DELETE FROM Usuarios WHERE Id = {Program._id}";
+                            if (connection.ReturnQuery(query))
+                            {
+                                MessageBox.Show("Usuario Eliminado Correctamente");
+                            }
+                            else
+                                MessageBox.Show("Error, intente de nuevo!!");
+                        }
+                        LoadUsuarios();
+                    }
+                }
             }
             else if (Program._option == "Level")
             {
+                if (Program._id > 0)
+                {
+                    if (Usuarios.UserLevel == 1)
+                    {
+                        Delete delete = new Delete();
+                        delete.ShowDialog();
+                        if (Program._delete == true)
+                        {
+                            string query = $"DELETE FROM UserLevel WHERE Id = {Program._id}";
+                            if (connection.ReturnQuery(query))
+                            {
+                                MessageBox.Show("Nivel de usuario eliminado correctamente");
+                            }
+                            else
+                                MessageBox.Show("Error, intente de nuevo!!");
 
+                            LoadNivelUsuarios();
+                        }
+                    }
+                }
             }
+            
         }
+
     }
 }

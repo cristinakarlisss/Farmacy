@@ -260,10 +260,11 @@ namespace Farmacy
             }
         }
 
-        public void GetProducts(string query)
+        public bool GetProducts(string query)
         {
             using(SqlConnection cnn = new SqlConnection(conexion))
             {
+                bool ok = false;
                 try
                 {
                     if (cnn.State == ConnectionState.Open)
@@ -283,13 +284,16 @@ namespace Farmacy
                         Producto.Marca = reader.GetString(5);
                         Producto.Caducidad = reader.GetDateTime(6);
                         Producto.Descripcion = reader.GetString(7);
+                        ok = true;
                     }
                 }
                 catch(Exception ex)
                 {
+                    ok = false;
                     cnn.Close();
                 }
                 cnn.Close();
+                return ok;
             }
         }
 
@@ -390,6 +394,35 @@ namespace Farmacy
             }
         }
 
+        public bool GetUserLevel(string query)
+        {
+            using(SqlConnection cnn = new SqlConnection(conexion))
+            {
+                bool ok = false;
+                try
+                {
+                    if (cnn.State == ConnectionState.Open)
+                        cnn.Close();
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand(query, cnn) { CommandType = CommandType.Text };
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Levels.Id = reader.GetInt32(0);
+                        Levels.Level = reader.GetString(1);
+                        ok = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ok = false;
+                    cnn.Close();
+                }
+                cnn.Close();
+                return ok;
+            }
+        }
+
         public int NoVenta()
         { 
             using(SqlConnection cnn = new SqlConnection(conexion))
@@ -413,9 +446,55 @@ namespace Farmacy
                 cnn.Close();
                 return v;
             }
-            
-           
-            
+        }
+
+        public int GetVenta(int cantidad, string fecha, int userId)
+        {
+            using (SqlConnection cnn = new SqlConnection(conexion))
+            {
+                int venta = 0;
+                try
+                {
+                    if (cnn.State == ConnectionState.Open)
+                        cnn.Close();
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand($"SELECT Id FROM Ventas WHERE CANTIDAD = {cantidad} AND Fecha = '{fecha}' AND UserId = {userId}", cnn) { CommandType = CommandType.Text };
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                        venta = reader.GetInt32(0);
+                }
+                catch(Exception ex)
+                {
+                    cnn.Close();
+                }
+                cnn.Close();
+                return venta;
+
+            }
+        }
+
+        public bool BuscarProductoVendido(string query)
+        {
+            using (SqlConnection cnn = new SqlConnection(conexion))
+            {
+                bool ok = false;
+                try
+                {
+                    if (cnn.State == ConnectionState.Open)
+                        cnn.Close();
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand(query, cnn) { CommandType = CommandType.Text };
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                        ok = true;
+                }
+                catch(Exception ex)
+                {
+                    cnn.Close();
+                }
+                cnn.Close();
+                return ok;
+            }
         }
     }
 }

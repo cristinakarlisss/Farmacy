@@ -29,6 +29,16 @@ namespace Farmacy
                 {
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
+                foreach(DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if(Convert.ToInt32(row.Cells["Stock"].Value) == 0)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                        row.DefaultCellStyle.ForeColor = Color.White;
+                        row.DefaultCellStyle.SelectionBackColor = Color.White;
+                        row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                    }
+                }
 
             }
             dataGridView1.Update();

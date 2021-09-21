@@ -56,6 +56,7 @@ namespace Farmacy
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 133);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;

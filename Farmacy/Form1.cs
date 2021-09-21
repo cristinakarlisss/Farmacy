@@ -252,13 +252,13 @@ namespace Farmacy
 
         private void btnReporteVentas_Click(object sender, EventArgs e)
         {
-            if (Program._isLogin)
-            {
+            //if (Program._isLogin)
+            //{
                 
                     openChildFormInPanel(new ReporteVentas());
-            }
-            else
-                    MessageBox.Show("Debes iniciar sesión primero");
+            //}
+            //else
+                   // MessageBox.Show("Debes iniciar sesión primero");
         }
     }
 }

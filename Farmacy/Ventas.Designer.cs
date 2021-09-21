@@ -273,7 +273,7 @@ namespace Farmacy
             // btnSearch
             // 
             this.btnSearch.Image = global::Farmacy.Properties.Resources.ic_search1;
-            this.btnSearch.Location = new System.Drawing.Point(174, 43);
+            this.btnSearch.Location = new System.Drawing.Point(164, 44);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(45, 36);
             this.btnSearch.TabIndex = 6;
@@ -305,6 +305,8 @@ namespace Farmacy
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(150, 22);
             this.txtCodigo.TabIndex = 3;
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
+            this.txtCodigo.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtCodigo_PreviewKeyDown);
             // 
             // label2
             // 
@@ -321,16 +323,17 @@ namespace Farmacy
             this.txtDate.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDate.Enabled = false;
-            this.txtDate.Location = new System.Drawing.Point(385, 32);
+            this.txtDate.Location = new System.Drawing.Point(315, 32);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(95, 22);
+            this.txtDate.Size = new System.Drawing.Size(165, 22);
             this.txtDate.TabIndex = 1;
+            this.txtDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(411, 13);
+            this.label1.Location = new System.Drawing.Point(374, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 0;
@@ -392,7 +395,6 @@ namespace Farmacy
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Enabled = false;
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::Farmacy.Properties.Resources.ic_note_add;
             this.btnNuevo.Location = new System.Drawing.Point(29, 70);
@@ -403,6 +405,7 @@ namespace Farmacy
             this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // panel1
             // 
@@ -435,6 +438,7 @@ namespace Farmacy
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;

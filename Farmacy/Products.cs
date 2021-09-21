@@ -29,7 +29,9 @@ namespace Farmacy
             {
                 connection.LoadData(dataGridView1, "SELECT A.Id,A.CodigoBarras,A.Nombre,B.Nombre As Categoria,A.Precio,A.Marca,A.Caducidad FROM Producto A " +
                     "INNER JOIN Categorias B " +
-                    "ON A.IdCategoria = B.Id ORDER BY A.Nombre");
+                    "ON A.IdCategoria = B.Id " +
+                    "WHERE A.Id not in (SELECT IdProducto FROM Productos_Vendidos) " +
+                    "ORDER BY A.Caducidad");
                 if (dataGridView1.Columns.Count > 0)
                 {
                     dataGridView1.Columns["Id"].Visible = false;
@@ -37,7 +39,17 @@ namespace Farmacy
                     {
                         col.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
-
+                    foreach(DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (Convert.ToDateTime(row.Cells["Caducidad"].Value) <= DateTime.Now)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Red;
+                            row.DefaultCellStyle.ForeColor = Color.White;
+                            row.DefaultCellStyle.SelectionBackColor = Color.White;
+                            row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                        }
+                       
+                    }
                 }
                 dataGridView1.Update();
             }

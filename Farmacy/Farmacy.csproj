@@ -130,6 +130,7 @@
       <DependentUpon>Inventario.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventarios.cs" />
+    <Compile Include="Levels.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +231,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReporteVentas.resx">
+      <DependentUpon>ReporteVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usuario.resx">
       <DependentUpon>Usuario.cs</DependentUpon>
     </EmbeddedResource>

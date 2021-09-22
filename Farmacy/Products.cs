@@ -21,6 +21,18 @@ namespace Farmacy
         private void Products_Load(object sender, EventArgs e)
         {
             LoadProducts();
+            if (cad != 0 && prox != 0)
+            {
+                MessageBox.Show($"Exiten {cad} productos caducados y {prox} productos proximos a caducar!!", "ATENCIÓN");
+            }
+            else if (cad != 0 && prox == 0)
+            {
+                MessageBox.Show($"Exiten {cad} productos caducados!!", "ATENCIÓN");
+            }
+            else if (cad == 0 && prox != 0)
+            {
+                MessageBox.Show($"Exiten {prox} productos proximos a caducar!!", "ATENCIÓN");
+            }
         }
         
         private void LoadProducts()
@@ -39,17 +51,7 @@ namespace Farmacy
                     {
                         col.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
-                    foreach(DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        if (Convert.ToDateTime(row.Cells["Caducidad"].Value) <= DateTime.Now)
-                        {
-                            row.DefaultCellStyle.BackColor = Color.Red;
-                            row.DefaultCellStyle.ForeColor = Color.White;
-                            row.DefaultCellStyle.SelectionBackColor = Color.White;
-                            row.DefaultCellStyle.SelectionForeColor = Color.Red;
-                        }
-                       
-                    }
+                   
                 }
                 dataGridView1.Update();
             }
@@ -83,31 +85,6 @@ namespace Farmacy
                 
             }
         }
-
-        //private void comboCategorias_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        connection.LoadData(dataGridView1, "SELECT A.Id,A.CodigoBarras,A.Nombre,B.Nombre As Categoria,A.Precio,A.Marca,A.Caducidad FROM Producto A " +
-        //        "INNER JOIN Categorias B " +
-        //        "ON A.IdCategoria = B.Id " +
-        //        $"WHERE A.IdCategoria = {comboCategoria.SelectedValue} ORDER BY A.Nombre");
-        //        if (dataGridView1.Columns.Count > 0)
-        //        {
-        //            dataGridView1.Columns["Id"].Visible = false;
-        //            foreach (DataGridViewColumn col in dataGridView1.Columns)
-        //            {
-        //                col.SortMode = DataGridViewColumnSortMode.NotSortable;
-        //            }
-
-        //        }
-        //        dataGridView1.Update();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -223,6 +200,48 @@ namespace Farmacy
                 MessageBox.Show("Debes iniciar sesión primero.", "Atención");
             LoadProducts();
 
+        }
+
+        private void dataGridView1_CellStyleChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+            int cad = 0;
+            int prox = 0;
+        private void dataGridView1_Paint(object sender, PaintEventArgs e)
+        {
+            cad = 0;
+            prox = 0;
+            DateTime date = DateTime.Now;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToDateTime(row.Cells["Caducidad"].Value) <= DateTime.Now)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                    row.DefaultCellStyle.ForeColor = Color.White;
+                    row.DefaultCellStyle.SelectionBackColor = Color.White;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                    cad = cad + 1;
+                }
+                else if(Convert.ToDateTime(row.Cells["Caducidad"].Value) <= date.AddDays(15))
+                {
+                    row.DefaultCellStyle.BackColor = Color.Orange;
+                    row.DefaultCellStyle.ForeColor = Color.White;
+                    row.DefaultCellStyle.SelectionBackColor = Color.White;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Orange;
+                    prox = prox + 1;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.Green;
+                    row.DefaultCellStyle.ForeColor = Color.White;
+                    row.DefaultCellStyle.SelectionBackColor = Color.White;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Green;
+                }
+
+            }
+            dataGridView1.Update();
+            
         }
     }
 }

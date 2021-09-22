@@ -186,10 +186,10 @@ namespace Farmacy
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            //if (Program._isLogin == true)
+            if (Program._isLogin == true)
                 openChildFormInPanel(new Ventas());
-            //else
-            //    MessageBox.Show("Debes iniciar sesión primero");
+            else
+                MessageBox.Show("Debes iniciar sesión primero");
             //openChildFormInPanel(new Ventas());
         }
 
@@ -252,13 +252,13 @@ namespace Farmacy
 
         private void btnReporteVentas_Click(object sender, EventArgs e)
         {
-            //if (Program._isLogin)
-            //{
-                
-                    openChildFormInPanel(new ReporteVentas());
-            //}
-            //else
-                   // MessageBox.Show("Debes iniciar sesión primero");
+            if (Program._isLogin)
+            {
+
+                openChildFormInPanel(new ReporteVentas());
+            }
+            else
+                MessageBox.Show("Debes iniciar sesión primero");
         }
     }
 }

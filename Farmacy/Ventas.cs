@@ -21,7 +21,7 @@ namespace Farmacy
         
         private void Ventas_Load(object sender, EventArgs e)
         {
-            txtDate.Text = DateTime.Now.ToString("dd-MM-yyyy hh:m tt");
+            txtDate.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm tt");
             txtVenta.Text = Convert.ToString(connection.NoVenta() + 1);
             dataGridView1.Columns.Add("Id", "Id");
             dataGridView1.Columns["Id"].Visible = false;
@@ -267,7 +267,7 @@ namespace Farmacy
         {
             if (dataGridView1.Rows.Count > 0)
             {
-                string fecha = DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss");
+                string fecha = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
                 string query = $"INSERT INTO Ventas (Cantidad,Fecha,UserId,ValorVenta,Subtotal,IGV,Total) " +
                     $"Values({dataGridView1.Rows.Count},'{fecha}',{Usuarios.Id},{txtValorVenta.Text},{txtSubtotal.Text},{txtIgv.Text},{txtTotalPagar.Text})";
                 if (connection.ReturnQuery(query))

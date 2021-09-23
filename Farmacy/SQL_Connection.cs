@@ -496,5 +496,41 @@ namespace Farmacy
                 return ok;
             }
         }
+
+        public bool LoadVenta(string query)
+        {
+            using(SqlConnection cnn = new SqlConnection(conexion))
+            {
+                bool ok = false;
+                try
+                {
+                    if (cnn.State == ConnectionState.Open)
+                        cnn.Close();
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand(query, cnn) { CommandType = CommandType.Text };
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        ok = true;
+                        Venta.Id = reader.GetInt32(0); 
+                        Venta.Cantidad = reader.GetInt32(1);
+                        Venta.Fecha = reader.GetDateTime(2);
+                        Venta.UserId = reader.GetInt32(3);
+                        Venta.ValorVenta = reader.GetDouble(4);
+                        Venta.Subtotal = reader.GetDouble(5);
+                        Venta.IGV = reader.GetDouble(6);
+                        Venta.Total = reader.GetDouble(7);
+
+                    }
+                }
+                catch(Exception ex)
+                {
+                    cnn.Close();
+                }
+                cnn.Close();
+                return ok;
+            }
+
+        }
     }
 }

@@ -167,6 +167,7 @@
       <DependentUpon>Usuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.cs" />
+    <Compile Include="Venta.cs" />
     <Compile Include="Ventas.cs">
       <SubType>Form</SubType>
     </Compile>

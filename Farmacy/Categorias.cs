@@ -43,10 +43,15 @@ namespace Farmacy
         {
             if (Program._isLogin == true)
             {
-                Create_Category create = new Create_Category();
-                create.ShowDialog();
-                LoadCategories();
-            }
+                if (Usuarios.UserLevel == 1)
+                {
+                    Create_Category create = new Create_Category();
+                    create.ShowDialog();
+                    LoadCategories();
+                }
+                else
+                    MessageBox.Show("No tienes permiso de acceder a esta opción");
+                }
             else
                 MessageBox.Show("Debes iniciar sesión primero");
         }

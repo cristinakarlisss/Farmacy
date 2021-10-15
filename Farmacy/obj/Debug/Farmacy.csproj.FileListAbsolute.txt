@@ -12,7 +12,6 @@ C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Products.resour
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Categorias.resources
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Login.resources
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\bin\Debug\System.ComponentModel.Annotations.dll
-C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.csproj.CopyComplete
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Inventario.resources
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.ProductosVendidos.resources
 C:\Users\RC1K0094\source\repos\Farmacy\Farmacy\obj\Debug\Farmacy.Usuario.resources

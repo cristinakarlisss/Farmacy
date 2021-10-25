@@ -538,7 +538,7 @@ namespace Farmacy
                 try
                 {
                     
-                    SqlCommand cmd = new SqlCommand("SELECT B.Nombre as Product,Count(B.Nombre)As Qty,A.Precio as Price, Count(B.Nombre) * A.Precio AS Total,D.[UserName] as [User],C.Subtotal as Subtotal, C.IGV as IVA, C.ValorVenta AS TotalVenta FROM Productos_Vendidos A " +
+                    SqlCommand cmd = new SqlCommand("SELECT B.Nombre as Product,Count(B.Nombre)As Qty,A.Precio as Price, Count(B.Nombre) * A.Precio AS Total,D.[UserName] as [User],C.Subtotal as Subtotal, C.IGV as IVA, C.Total AS TotalVenta FROM Productos_Vendidos A " +
                         "INNER JOIN Producto B " +
                         "ON A.IdProducto = B.Id " +
                         "INNER JOIN Ventas C " +
@@ -546,7 +546,7 @@ namespace Farmacy
                         "INNER JOIN Usuarios D " +
                         "ON A.IdUsuario = D.Id " +
                         $"WHERE A.IdUsuario = {Program._userId} AND A.IdVenta = {Program._venta} " +
-                        "GROUP BY B.Nombre, A.Precio, C.Subtotal, C.IGV, C.ValorVenta, D.UserName", cnn) { CommandType = CommandType.Text };
+                        "GROUP BY B.Nombre, A.Precio, C.Subtotal, C.IGV, C.Total, D.UserName", cnn) { CommandType = CommandType.Text };
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataSet dataSet = new DataSet();
                     try

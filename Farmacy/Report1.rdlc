@@ -767,7 +767,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox30</rd:DefaultName>
-          <Top>0cm</Top>
           <Height>0.6cm</Height>
           <Width>9.09786cm</Width>
           <ZIndex>2</ZIndex>

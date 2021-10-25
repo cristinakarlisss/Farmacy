@@ -31,12 +31,22 @@ namespace Farmacy
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.ReportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DataSet1 = new Farmacy.DataSet1();
             this.DataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
+            this.DataSet1 = new Farmacy.DataSet1();
+            this.ReportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // DataTable1BindingSource
+            // 
+            this.DataTable1BindingSource.DataMember = "DataTable1";
+            this.DataTable1BindingSource.DataSource = this.DataSet1;
+            // 
+            // DataSet1
+            // 
+            this.DataSet1.DataSetName = "DataSet1";
+            this.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ReportViewer1
             // 
@@ -53,7 +63,6 @@ namespace Farmacy
             this.ReportViewer1.ShowExportButton = false;
             this.ReportViewer1.ShowFindControls = false;
             this.ReportViewer1.ShowPageNavigationControls = false;
-            this.ReportViewer1.ShowPrintButton = false;
             this.ReportViewer1.ShowPromptAreaButton = false;
             this.ReportViewer1.ShowRefreshButton = false;
             this.ReportViewer1.ShowStopButton = false;
@@ -61,16 +70,6 @@ namespace Farmacy
             this.ReportViewer1.Size = new System.Drawing.Size(455, 526);
             this.ReportViewer1.TabIndex = 15;
             this.ReportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
-            // 
-            // DataSet1
-            // 
-            this.DataSet1.DataSetName = "DataSet1";
-            this.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // DataTable1BindingSource
-            // 
-            this.DataTable1BindingSource.DataMember = "DataTable1";
-            this.DataTable1BindingSource.DataSource = this.DataSet1;
             // 
             // Print_Preview
             // 
@@ -85,8 +84,8 @@ namespace Farmacy
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Print_Preview";
             this.Load += new System.EventHandler(this.Print_Preview_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }

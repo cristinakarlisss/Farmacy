@@ -32,11 +32,11 @@ namespace Farmacy
                     $"Values ('{txtNombre.Text}')";
                 if (connection.ReturnQuery(query))
                 {
-                    MessageBox.Show("La categoría ha sido creada correctamente");
+                    MessageBox.Show("La categoría ha sido creada correctamente", "OK");
                 }
                 else
                 {
-                    MessageBox.Show("Datos inválidos. Intente nuevamenre!");
+                    MessageBox.Show("Datos inválidos. Intente nuevamenre!", "Error");
                 }
             txtNombre.Clear();
             return; 

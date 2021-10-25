@@ -67,7 +67,7 @@ namespace Farmacy
             }
             else
             {
-                MessageBox.Show("No puedes editar este usuario.");
+                MessageBox.Show("No puedes editar este usuario.", "Alerta");
                 return false;
             }
         }
@@ -110,12 +110,12 @@ namespace Farmacy
                 if (connection.ReturnQuery(query))
                 {
                     
-                    MessageBox.Show("El usuario ha sido actualizado exitosamente!!");
+                    MessageBox.Show("El usuario ha sido actualizado exitosamente!!", "OK");
                 }
                 else
                 {
                    
-                    MessageBox.Show("Algo ha ocurrido, intente nuevamente!!");
+                    MessageBox.Show("Algo ha ocurrido, intente nuevamente!!", "Error");
                 }
 
             }

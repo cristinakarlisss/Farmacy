@@ -53,6 +53,7 @@ namespace Farmacy
                             }
                             else
                             {
+                                MessageBox.Show("Contraseña inválida. Intente nuevamente!!", "Error");
                                 lblMessage.Visible = true;
                                 txtUser.Text = null;
                                 txtPassword.Text = null;

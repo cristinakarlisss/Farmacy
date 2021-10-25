@@ -49,11 +49,11 @@ namespace Farmacy
                 $"WHERE Id = {Program._id}";
             if (connection.ReturnQuery(query))
             {
-                MessageBox.Show("La categoría ha sido editada éxitosamente");
+                MessageBox.Show("La categoría ha sido editada éxitosamente", "OK");
             }
             else
             {
-                MessageBox.Show("No se pudo editar. Intenta nuevamente");
+                MessageBox.Show("No se pudo editar. Intenta nuevamente", "Error");
             }
         }
     }

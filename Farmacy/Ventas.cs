@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Data;
 
 namespace Farmacy
 {
     public partial class Ventas : Form
     {
         SQL_Connection connection = new SQL_Connection();
-
+        
         public Ventas()
         {
             InitializeComponent();
         }
-        
+
         private void Ventas_Load(object sender, EventArgs e)
         {
             txtDate.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm tt");
@@ -31,6 +26,8 @@ namespace Farmacy
             dataGridView1.Columns.Add("Precio", "Precio");
             dataGridView1.Columns.Add("Total", "Total");
             btnAdd.Enabled = false;
+            btnRecibo.Enabled = false;
+            btnImporte.Enabled = false;
             foreach (DataGridViewColumn col in dataGridView1.Columns)
             {
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -42,6 +39,7 @@ namespace Farmacy
             string query = $"SELECT * FROM Producto WHERE CodigoBarras = '{codigo}'";
             if (connection.GetProducts(query))
             {
+
                 return true;
             }
             else
@@ -71,17 +69,37 @@ namespace Farmacy
                     if (!connection.BuscarProductoVendido(query))
                     {
                         LoadInventary(txtCodigo.Text);
+                        if (Producto.Caducidad >= DateTime.Now)
+                        {
+                            if (Producto.Caducidad <= DateTime.Now.AddDays(15))
+                            {
+                                MessageBox.Show($"La fecha de caducidad del producto es {Producto.Caducidad.ToString("dd/MM/yyyy")}","ALERTA");
 
-                        txtName.Text = Producto.Nombre;
-                        txtPrice.Text = Convert.ToString(Producto.Precio);
-                        txtStock.Text = Convert.ToString(Inventarios.Stock);
-                        numQty.Value = 1;
-                        decimal total = Producto.Precio * numQty.Value;
-                        txtTotal.Text = Convert.ToString(total);
-                        btnAdd.Enabled = true;
+                            }
+                            
+                                txtName.Text = Producto.Nombre;
+                                txtPrice.Text = Convert.ToString(Producto.Precio);
+                                txtStock.Text = Convert.ToString(Inventarios.Stock);
+                                numQty.Value = 1;
+                                decimal total = Producto.Precio * numQty.Value;
+                                txtTotal.Text = Convert.ToString(total);
+                                btnAdd.Enabled = true;
+                            
+                            
+                        }
+                       
+                        else
+                        {
+                            MessageBox.Show("No puedes vender este producto por que esta caducado");
+                            txtCodigo.Clear();
+                        }
                     }
-                     else
-                        MessageBox.Show("Este producto ya fue vendido");  
+                    else
+                    {
+                        MessageBox.Show("Este producto ya fue vendido");
+                        txtCodigo.Clear();
+                    }
+                        
                 }
                 else
                 {
@@ -108,7 +126,7 @@ namespace Farmacy
         {
             if (txtCodigo.Text != null && txtCodigo.Text != "")
             {
-                if(Inventarios.Stock > 0)
+                if (Inventarios.Stock > 0)
                 {
                     if (dataGridView1.Rows.Count > 0)
                     {
@@ -125,11 +143,21 @@ namespace Farmacy
                                 txtTotal.Clear();
                                 //CalculateData();
                                 btnAdd.Enabled = false;
+                                btnImporte.Enabled = false;
+                                btnRecibo.Enabled = false;
                                 return;
                             }
+                            //if(txtName.Text == Convert.ToString(r.Cells["Product"].Value))
+                            //{
+                            //    int c = Convert.ToInt32(r.Cells["Qty"].Value);
+                            //    r.Cells["Qty"].Value = c + 1;
+                            //    dataGridView1.Update();
+                            //    CalculateData();
+                            //}
                         }
                     }
                     int row = dataGridView1.Rows.Count + 1;
+
                     dataGridView1.Rows.Add(row, $"{txtCodigo.Text}", $"{txtName.Text}", $"{numQty.Value}", $"{txtPrice.Text}", $"{txtTotal.Text}");
                     txtCodigo.Clear();
                     txtName.Clear();
@@ -139,15 +167,17 @@ namespace Farmacy
                     txtTotal.Clear();
                     CalculateData();
                     btnAdd.Enabled = false;
+                    btnImporte.Enabled = true;
+                    btnRecibo.Enabled = false;
                 }
-               
+
             }
             else
                 MessageBox.Show("Ingresa un producto");
-            
+
 
         }
-      
+
 
 
         private void CalculateData()
@@ -233,7 +263,7 @@ namespace Farmacy
         decimal cambio = 0;
         private void btnImporte_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.Rows.Count > 0)
+            if (dataGridView1.Rows.Count > 0)
             {
                 if (txtImporte.Value > 0 && txtImporte.Value >= Convert.ToDecimal(txtTotalPagar.Text))
                 {
@@ -242,6 +272,7 @@ namespace Farmacy
                     btnAdd.Enabled = false;
                     FinishSale();
                     btnNuevo.Enabled = true;
+                    btnRecibo.Enabled = true;
                 }
                 else
                     MessageBox.Show("Ingresa un importe válido");
@@ -272,7 +303,7 @@ namespace Farmacy
                     $"Values({dataGridView1.Rows.Count},'{fecha}',{Usuarios.Id},{txtValorVenta.Text},{txtSubtotal.Text},{txtIgv.Text},{txtTotalPagar.Text})";
                 if (connection.ReturnQuery(query))
                 {
-                    int venta = connection.GetVenta(dataGridView1.Rows.Count,fecha,Usuarios.Id);
+                    int venta = connection.GetVenta(dataGridView1.Rows.Count, fecha, Usuarios.Id);
                     foreach (DataGridViewRow r in dataGridView1.Rows)
                     {
                         if (SearchProduct(Convert.ToString(r.Cells["Codigo"].Value)))
@@ -290,7 +321,7 @@ namespace Farmacy
                     }
                     MessageBox.Show("La compra ha sido terminada exitosamente");
                 }
-                
+
             }
         }
 
@@ -318,5 +349,24 @@ namespace Farmacy
 
             btnAdd.Enabled = false;
         }
+
+        private void btnRecibo_Click(object sender, EventArgs e)
+        {
+            //    DataSet1 ds = new DataSet1();
+            //    DataTable dt = ds.Tables[0];
+            //    dataGridView1.DataSource = dt;
+            
+            Print_Preview preview = new Print_Preview();
+            preview.ShowDialog();
+            //CrearTicket ticket = new CrearTicket();
+            //string datosLugar = "Farmacia";
+            //string fechaHora = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
+            //string empleado = Program._userName;
+
+            
+
+
+        }
+
     }
 }

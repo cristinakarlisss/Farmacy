@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Farmacy
@@ -531,6 +528,81 @@ namespace Farmacy
                 return ok;
             }
 
+        }
+
+        public bool LoadPreview(ReportViewer report, int venta, BindingSource bindingSource)
+        {
+            using(SqlConnection cnn = new SqlConnection(conexion))
+            {
+                bool ok = false;
+                try
+                {
+                    
+                    SqlCommand cmd = new SqlCommand("SELECT B.Nombre as Product,Count(B.Nombre)As Qty,A.Precio as Price, Count(B.Nombre) * A.Precio AS Total,D.[UserName] as [User],C.Subtotal as Subtotal, C.IGV as IVA, C.ValorVenta AS TotalVenta FROM Productos_Vendidos A " +
+                        "INNER JOIN Producto B " +
+                        "ON A.IdProducto = B.Id " +
+                        "INNER JOIN Ventas C " +
+                        "ON A.IdVenta = C.Id " +
+                        "INNER JOIN Usuarios D " +
+                        "ON A.IdUsuario = D.Id " +
+                        $"WHERE A.IdUsuario = {Program._userId} AND A.IdVenta = {Program._venta} " +
+                        "GROUP BY B.Nombre, A.Precio, C.Subtotal, C.IGV, C.ValorVenta, D.UserName", cnn) { CommandType = CommandType.Text };
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    try
+                    {
+                        if (cnn.State == ConnectionState.Open)
+                            cnn.Close();
+
+                        cnn.Open();
+                        if (da.Fill(dataSet, "logn") > 0)
+                        {
+                            bindingSource.DataSource = dataSet.Tables[0];
+                            var rds = new ReportDataSource("DataSet1",bindingSource);
+                            report.LocalReport.ReportPath = "C:\\Users\\RC1K0094\\source\\repos\\Farmacy\\Farmacy\\Report1.rdlc";
+                            report.LocalReport.DataSources.Clear();
+                            report.LocalReport.DataSources.Add(rds);
+                            report.RefreshReport();
+                            ok = true;
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ok = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    cnn.Close();
+                }
+                cnn.Close();
+                return ok;
+            }
+        }
+        public  void ReturnLastSale()
+        {
+            using (SqlConnection cnn = new SqlConnection(conexion))
+            {
+                try
+                {
+                    if (cnn.State == ConnectionState.Open)
+                        cnn.Close();
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT MAX(Id) FROM Ventas", cnn) { CommandType = CommandType.Text };
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Program._venta = reader.GetInt32(0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    cnn.Close();
+                }
+                cnn.Close();
+               
+            }
         }
     }
 }

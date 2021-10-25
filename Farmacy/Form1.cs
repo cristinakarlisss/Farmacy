@@ -132,10 +132,10 @@ namespace Farmacy
                     openChildFormInPanel(new Usuario());
                 }
                 else
-                    MessageBox.Show("No tienes permiso de acceder a esta opción");
+                    MessageBox.Show("No tienes permiso de acceder a esta opción", "Alerta");
             }
             else
-                MessageBox.Show("Debes iniciar sesión primero");
+                MessageBox.Show("Debes iniciar sesión primero","Alerta");
             //showSubmenu(panelSubmenu4);
             //showSubmenu(panelUsuariosbotones);
         }
@@ -189,8 +189,7 @@ namespace Farmacy
             if (Program._isLogin == true)
                 openChildFormInPanel(new Ventas());
             else
-                MessageBox.Show("Debes iniciar sesión primero");
-            //openChildFormInPanel(new Ventas());
+                MessageBox.Show("Debes iniciar sesión primero", "Alerta");
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
@@ -203,10 +202,10 @@ namespace Farmacy
                     openChildFormInPanel(new Usuario());
                 }
                 else
-                    MessageBox.Show("No tienes permiso de acceder a esta opción");
+                    MessageBox.Show("No tienes permiso de acceder a esta opción", "Alerta");
             }
             else
-                MessageBox.Show("Debes iniciar sesión primero");
+                MessageBox.Show("Debes iniciar sesión primero", "Alerta");
         }
 
         //private void btnUserLevel_Click(object sender, EventArgs e)
@@ -252,13 +251,13 @@ namespace Farmacy
 
         private void btnReporteVentas_Click(object sender, EventArgs e)
         {
-            //if (Program._isLogin)
-            //{
+            if (Program._isLogin)
+            {
 
                 openChildFormInPanel(new ReporteVentas());
-            //}
-            //else
-            //    MessageBox.Show("Debes iniciar sesión primero");
+            }
+            else
+                MessageBox.Show("Debes iniciar sesión primero", "Alerta");
         }
     }
 }

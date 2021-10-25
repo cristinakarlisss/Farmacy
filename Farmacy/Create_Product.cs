@@ -129,7 +129,7 @@ namespace Farmacy
                 $"VALUES ('{txtCodigo.Text}','{txtNombre.Text}','{comboCategoria.SelectedValue}','{numPrecio.Value}','{txtMarca.Text}','{pickerCaducidad.Value}','{txtDescripcion.Text}') ";
             if (connection.ReturnQuery(query))
             {
-                MessageBox.Show("Se ha añadido correctamente el producto!!", "Ok");
+                MessageBox.Show("Se ha añadido correctamente el producto!!", "OK");
                 string query2 = $"SELECT A.Id,A.ProductName,B.Nombre,A.Stock,A.Last_upd FROM Inventario A " +
                     $"INNER JOIN Categorias B " +
                     $"ON A.IdCategoria = B.Id " +
@@ -147,11 +147,11 @@ namespace Farmacy
                             $"WHERE Id = {Inventarios.Id}";
                         if (connection.ReturnQuery(query4))
                         {
-                            MessageBox.Show("Inventario actualizado!");
+                            MessageBox.Show("Inventario actualizado!", "Ok");
                         }
                         else
                         {
-                            MessageBox.Show("Error tratando de actualizar inventario.");
+                            MessageBox.Show("Error tratando de actualizar inventario.", "Error");
                         }
                     }
                    

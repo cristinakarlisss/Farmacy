@@ -19,6 +19,7 @@ namespace Farmacy
         public static bool _delete { get; set; }
         public static string _option { get; set; }
         public static bool _edit { get; set; }
+        public static int _venta { get; set; }
         [STAThread]
         static void Main()
         {

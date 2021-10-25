@@ -102,15 +102,15 @@ namespace Farmacy
                 txtMarca.Focus();
                 return false;
             }
-            if (pickerCaducidad.Value < DateTime.Now.Date)
-            {
+            //if (pickerCaducidad.Value < DateTime.Now.Date)
+            //{
 
-                lblMessage.Text = "Ingresa una fecha de caducidad válida.";
-                lblMessage.Update();
-                lblMessage.Visible = true;
-                pickerCaducidad.Focus();
-                return false;
-            }
+            //    lblMessage.Text = "Ingresa una fecha de caducidad válida.";
+            //    lblMessage.Update();
+            //    lblMessage.Visible = true;
+            //    pickerCaducidad.Focus();
+            //    return false;
+            //}
             if (txtDescripcion.Text.Length > 300)
             {
 
@@ -147,7 +147,7 @@ namespace Farmacy
                 $"WHERE Id = {Program._id}";
             if (connection.ReturnQuery(query))
             {
-                MessageBox.Show("El producto fue editado exitosamente!!", "Ok");
+                MessageBox.Show("El producto fue editado exitosamente!!", "OK");
             }
             else
             {

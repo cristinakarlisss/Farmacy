@@ -13,9 +13,13 @@ namespace Farmacy
     public partial class Products : Form
     {
         SQL_Connection connection = new SQL_Connection();
+        int cad = 0;
+        int prox = 0;
         public Products()
         {
             InitializeComponent();
+            //LoadProducts();
+           
         }
        
         private void Products_Load(object sender, EventArgs e)
@@ -23,15 +27,15 @@ namespace Farmacy
             LoadProducts();
             if (cad != 0 && prox != 0)
             {
-                MessageBox.Show($"Exiten {cad} productos caducados y {prox} productos proximos a caducar!!", "ATENCIÓN");
+                MessageBox.Show($"Exiten {cad} productos caducados y {prox} productos proximos a caducar!!", "Alerta");
             }
             else if (cad != 0 && prox == 0)
             {
-                MessageBox.Show($"Exiten {cad} productos caducados!!", "ATENCIÓN");
+                MessageBox.Show($"Exiten {cad} productos caducados!!", "Alerta");
             }
             else if (cad == 0 && prox != 0)
             {
-                MessageBox.Show($"Exiten {prox} productos proximos a caducar!!", "ATENCIÓN");
+                MessageBox.Show($"Exiten {prox} productos proximos a caducar!!", "Alerta");
             }
         }
         
@@ -51,6 +55,7 @@ namespace Farmacy
                     {
                         col.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
+
                    
                 }
                 dataGridView1.Update();
@@ -94,7 +99,7 @@ namespace Farmacy
                 create.ShowDialog();
             }
             else
-                MessageBox.Show("Debes iniciar sesión primero.","Atención");
+                MessageBox.Show("Debes iniciar sesión primero.","Alerta");
             LoadProducts();
         }
         //private void comboCategoria_Click(object sender, EventArgs e)
@@ -146,7 +151,7 @@ namespace Farmacy
                 }
             }
             else
-                MessageBox.Show("Debes iniciar sesión primero.", "Atención");
+                MessageBox.Show("Debes iniciar sesión primero.", "Alerta");
             LoadProducts();
 
 
@@ -185,11 +190,11 @@ namespace Farmacy
                             string query = $"DELETE FROM Producto WHERE Id = '{Program._id}'";
                             if (connection.ReturnQuery(query))
                             {
-                                MessageBox.Show("El producto ha sido eliminado exitosamente!", "Ok");
+                                MessageBox.Show("El producto ha sido eliminado exitosamente!", "OK");
                             }
                             else
                             {
-                                MessageBox.Show("Algo ha salido mal, intente nuevamente", "Atención");
+                                MessageBox.Show("Algo ha salido mal, intente nuevamente", "Alerta");
                             }
                         }
                     }
@@ -197,7 +202,7 @@ namespace Farmacy
                 }
             }
             else
-                MessageBox.Show("Debes iniciar sesión primero.", "Atención");
+                MessageBox.Show("Debes iniciar sesión primero.", "Alerta");
             LoadProducts();
 
         }
@@ -206,8 +211,7 @@ namespace Farmacy
         {
 
         }
-            int cad = 0;
-            int prox = 0;
+            
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
         {
             cad = 0;
@@ -240,8 +244,9 @@ namespace Farmacy
                 }
 
             }
-            dataGridView1.Update();
-            
+           
+           
+            //dataGridView1.Update();
         }
     }
 }

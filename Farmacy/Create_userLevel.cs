@@ -57,12 +57,12 @@ namespace Farmacy
                 $"values ('{txtNivel.Text}') ";
             if (connection.ReturnQuery(query))
             {
-                MessageBox.Show("El nivel se ha agregado correctamente");
+                MessageBox.Show("El nivel se ha agregado correctamente", "OK");
                 txtNivel.Clear();
             }
             else
             {
-                MessageBox.Show("Algo ha sucedido, intente de nuevo!!");
+                MessageBox.Show("Algo ha sucedido, intente de nuevo!!", "Error");
             }
             return;
         }

@@ -295,9 +295,9 @@ namespace Farmacy
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(15, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 16);
+            this.label3.Size = new System.Drawing.Size(128, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Nombre del pr...";
+            this.label3.Text = "Nombre del producto";
             // 
             // txtCodigo
             // 
@@ -378,6 +378,7 @@ namespace Farmacy
             this.btnRecibo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRecibo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRecibo.UseVisualStyleBackColor = true;
+            this.btnRecibo.Click += new System.EventHandler(this.btnRecibo_Click);
             // 
             // btnImporte
             // 

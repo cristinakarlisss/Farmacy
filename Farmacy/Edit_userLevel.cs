@@ -36,7 +36,7 @@ namespace Farmacy
         {
             if(txtNivel.Text == null || txtNivel.Text == "")
             {
-                MessageBox.Show("Ingresa el nombre del nivel!!");
+                MessageBox.Show("Ingresa el nombre del nivel!!","Alerta");
                 return false;
             }
             return true;
@@ -54,13 +54,13 @@ namespace Farmacy
                     $"Level = '{txtNivel.Text}' WHERE Id = {Levels.Id}";
                 if (connection.ReturnQuery(query))
                 {
-                    MessageBox.Show("El nivel fue editado exitosamente!!");
+                    MessageBox.Show("El nivel fue editado exitosamente!!", "OK");
                 }
                 else
-                    MessageBox.Show("Algo ha sucedido. Intenta nuevamente.");
+                    MessageBox.Show("Algo ha sucedido. Intenta nuevamente.", "Error");
             }
             else
-                MessageBox.Show("Cambios guardados!!");
+                MessageBox.Show("Cambios guardados!!", "OK");
         }
     }
 }

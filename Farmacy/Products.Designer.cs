@@ -80,7 +80,7 @@ namespace Farmacy
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(845, 433);
+            this.dataGridView1.Size = new System.Drawing.Size(839, 433);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellStyleChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellStyleChanged);
@@ -146,7 +146,7 @@ namespace Farmacy
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtProducto);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(418, 61);
+            this.groupBox1.Location = new System.Drawing.Point(412, 51);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(415, 64);
             this.groupBox1.TabIndex = 6;
@@ -184,7 +184,7 @@ namespace Farmacy
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(84)))), ((int)(((byte)(115)))));
-            this.ClientSize = new System.Drawing.Size(845, 566);
+            this.ClientSize = new System.Drawing.Size(839, 566);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);

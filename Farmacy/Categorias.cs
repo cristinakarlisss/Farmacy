@@ -50,10 +50,10 @@ namespace Farmacy
                     LoadCategories();
                 }
                 else
-                    MessageBox.Show("No tienes permiso de acceder a esta opción");
+                    MessageBox.Show("No tienes permiso de acceder a esta opción", "Alerta");
                 }
             else
-                MessageBox.Show("Debes iniciar sesión primero");
+                MessageBox.Show("Debes iniciar sesión primero", "Alerta");
         }
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -95,7 +95,7 @@ namespace Farmacy
                 }
             }
             else
-                MessageBox.Show("Debes iniciar sesión primero");
+                MessageBox.Show("Debes iniciar sesión primero", "Alerta");
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -115,10 +115,10 @@ namespace Farmacy
                             string query = $"DELETE FROM Categorias where Id = {Program._id}";
                             if (conexion.ReturnQuery(query))
                             {
-                                MessageBox.Show("La categoría ha sido eliminada exitosamente");
+                                MessageBox.Show("La categoría ha sido eliminada exitosamente", "OK");
                             }
                             else
-                                MessageBox.Show("Algo ha pasado, intenta nuevamente");
+                                MessageBox.Show("Algo ha pasado, intenta nuevamente","Error");
                         }
                     }
                     LoadCategories();

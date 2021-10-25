@@ -90,14 +90,14 @@ namespace Farmacy
 
             if (connection.ReturnQuery(query))
             {
-                MessageBox.Show("El usuario ha sido creado correctamente");
+                MessageBox.Show("El usuario ha sido creado correctamente", "OK");
                 txtUser.Clear();
                 txtPassword.Clear();
                 LoadNiveles();
             }
             else
             {
-                MessageBox.Show("Algo ha sucedido, intente nuevamente");
+                MessageBox.Show("Algo ha sucedido, intente nuevamente", "Error");
                 txtUser.Focus();
             }
             return;

@@ -38,6 +38,7 @@ namespace Farmacy
             this.panelSubmenu4 = new System.Windows.Forms.Panel();
             this.btnOpUsuarios = new System.Windows.Forms.Button();
             this.panelSubmenu3 = new System.Windows.Forms.Panel();
+            this.btnReporteVentas = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnOpVentas = new System.Windows.Forms.Button();
             this.panelSubmenu1 = new System.Windows.Forms.Panel();
@@ -54,7 +55,6 @@ namespace Farmacy
             this.buttonHideMenu = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnReporteVentas = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelMenuOptions.SuspendLayout();
             this.panelSubmenu3.SuspendLayout();
@@ -160,6 +160,23 @@ namespace Farmacy
             this.panelSubmenu3.Name = "panelSubmenu3";
             this.panelSubmenu3.Size = new System.Drawing.Size(200, 56);
             this.panelSubmenu3.TabIndex = 5;
+            // 
+            // btnReporteVentas
+            // 
+            this.btnReporteVentas.AutoSize = true;
+            this.btnReporteVentas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReporteVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
+            this.btnReporteVentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReporteVentas.FlatAppearance.BorderSize = 0;
+            this.btnReporteVentas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReporteVentas.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteVentas.Location = new System.Drawing.Point(0, 28);
+            this.btnReporteVentas.Name = "btnReporteVentas";
+            this.btnReporteVentas.Size = new System.Drawing.Size(200, 28);
+            this.btnReporteVentas.TabIndex = 3;
+            this.btnReporteVentas.Text = "Reporte de Ventas";
+            this.btnReporteVentas.UseVisualStyleBackColor = false;
+            this.btnReporteVentas.Click += new System.EventHandler(this.btnReporteVentas_Click);
             // 
             // btnVentas
             // 
@@ -382,23 +399,6 @@ namespace Farmacy
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnReporteVentas
-            // 
-            this.btnReporteVentas.AutoSize = true;
-            this.btnReporteVentas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnReporteVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.btnReporteVentas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReporteVentas.FlatAppearance.BorderSize = 0;
-            this.btnReporteVentas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReporteVentas.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReporteVentas.Location = new System.Drawing.Point(0, 28);
-            this.btnReporteVentas.Name = "btnReporteVentas";
-            this.btnReporteVentas.Size = new System.Drawing.Size(200, 28);
-            this.btnReporteVentas.TabIndex = 3;
-            this.btnReporteVentas.Text = "Reporte de Ventas";
-            this.btnReporteVentas.UseVisualStyleBackColor = false;
-            this.btnReporteVentas.Click += new System.EventHandler(this.btnReporteVentas_Click);
             // 
             // Form1
             // 

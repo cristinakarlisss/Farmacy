@@ -1,3 +1,7 @@
 ﻿namespace Farmacy
 {
 }
+
+namespace Farmacy
+{
+}

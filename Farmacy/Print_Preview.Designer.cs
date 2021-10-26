@@ -67,7 +67,7 @@ namespace Farmacy
             this.ReportViewer1.ShowRefreshButton = false;
             this.ReportViewer1.ShowStopButton = false;
             this.ReportViewer1.ShowZoomControl = false;
-            this.ReportViewer1.Size = new System.Drawing.Size(455, 526);
+            this.ReportViewer1.Size = new System.Drawing.Size(455, 605);
             this.ReportViewer1.TabIndex = 15;
             this.ReportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
@@ -75,7 +75,7 @@ namespace Farmacy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 526);
+            this.ClientSize = new System.Drawing.Size(455, 605);
             this.Controls.Add(this.ReportViewer1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

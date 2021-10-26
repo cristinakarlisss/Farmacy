@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Farmacy
@@ -50,10 +44,7 @@ namespace Farmacy
                 btnLogin.Update();
                 lblUser.Text =Usuarios.UserName;
                 lblUser.Update();
-                //if (Usuarios.UserLevel == 1)
-                //{
-                //    btnOpUsuarios.Visible = true;
-                //}  
+              
             }
             else
             {
@@ -92,10 +83,8 @@ namespace Farmacy
                 lblAppName.Visible = false;
                 lblReloj.Visible = false;
                 hideUser();
-               // panelMenu.Size = new Size(145, 0);
                 panelMenu.Size = buttonHideMenu.Size;
                 panelChildForm.Size = new Size(1000, 605);
-                
             }
                 
         }
@@ -105,8 +94,8 @@ namespace Farmacy
         }
 
         private void buttonOpcion2_Click(object sender, EventArgs e)
-        {
-            //showSubmenu(panelSubmenu2);
+        {   
+
         }
 
         private Form activeForm = null;
@@ -136,8 +125,7 @@ namespace Farmacy
             }
             else
                 MessageBox.Show("Debes iniciar sesión primero","Alerta");
-            //showSubmenu(panelSubmenu4);
-            //showSubmenu(panelUsuariosbotones);
+         
         }
         private void openChildFormInPanel(Form childForm)
         {
@@ -208,10 +196,7 @@ namespace Farmacy
                 MessageBox.Show("Debes iniciar sesión primero", "Alerta");
         }
 
-        //private void btnUserLevel_Click(object sender, EventArgs e)
-        //{
-        //    openChildFormInPanel(new UserLevel());
-        //}
+      
 
         private void btnLogin_Click(object sender, EventArgs e)
         {

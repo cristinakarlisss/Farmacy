@@ -44,7 +44,6 @@ namespace Farmacy
             }
             else
                 return false;
-
         }
         private void LoadInventary(string codigo)
         {
@@ -84,8 +83,6 @@ namespace Farmacy
                                 decimal total = Producto.Precio * numQty.Value;
                                 txtTotal.Text = Convert.ToString(total);
                                 btnAdd.Enabled = true;
-                            
-                            
                         }
                        
                         else
@@ -147,13 +144,6 @@ namespace Farmacy
                                 btnRecibo.Enabled = false;
                                 return;
                             }
-                            //if(txtName.Text == Convert.ToString(r.Cells["Product"].Value))
-                            //{
-                            //    int c = Convert.ToInt32(r.Cells["Qty"].Value);
-                            //    r.Cells["Qty"].Value = c + 1;
-                            //    dataGridView1.Update();
-                            //    CalculateData();
-                            //}
                         }
                     }
                     int row = dataGridView1.Rows.Count + 1;
@@ -352,20 +342,9 @@ namespace Farmacy
 
         private void btnRecibo_Click(object sender, EventArgs e)
         {
-            //    DataSet1 ds = new DataSet1();
-            //    DataTable dt = ds.Tables[0];
-            //    dataGridView1.DataSource = dt;
-            
+            Program._importe = txtImporte.Value;
             Print_Preview preview = new Print_Preview();
             preview.ShowDialog();
-            //CrearTicket ticket = new CrearTicket();
-            //string datosLugar = "Farmacia";
-            //string fechaHora = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
-            //string empleado = Program._userName;
-
-            
-
-
         }
 
     }

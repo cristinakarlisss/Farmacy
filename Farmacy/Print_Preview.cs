@@ -22,7 +22,7 @@ namespace Farmacy
         private void Crear()
         {
             connection.ReturnLastSale();
-            connection.LoadPreview(ReportViewer1, Program._venta, DataTable1BindingSource);
+            connection.LoadPreview(ReportViewer1, Program._venta, DataTable1BindingSource, Program._importe);
         }
     }
 }
